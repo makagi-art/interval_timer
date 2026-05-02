@@ -9,10 +9,11 @@ const timeDisplay = document.getElementById('time-left');
 const progressCircle = document.getElementById('progress-ring');
 
 // --- Circle Geometry ---
-const circleRadius = progressCircle.r.baseVal.value;
-const circleCircumference = circleRadius * 2 * Math.PI;
+// r="120" は HTML の SVG 属性に合わせてハードコード
+// (display:none 状態で .r.baseVal.value を読むとブラウザによって 0 や例外になるため)
+const circleCircumference = 120 * 2 * Math.PI; // ≈ 753.98
 progressCircle.style.strokeDasharray  = `${circleCircumference} ${circleCircumference}`;
-progressCircle.style.strokeDashoffset = circleCircumference;
+progressCircle.style.strokeDashoffset = `${circleCircumference}`;
 
 function setProgress(ratio) {
     // ratio: 1 = full, 0 = empty
