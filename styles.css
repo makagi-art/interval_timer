@@ -1,0 +1,307 @@
+:root {
+    --bg-dark: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --work-color: #10b981;
+    --rest-color: #3b82f6;
+    --prepare-color: #f59e0b;
+    --danger: #ef4444;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+/* Dynamic Background Shapes */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.5;
+    transition: background 1s ease;
+}
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: -50px;
+    left: -50px;
+    background: var(--primary);
+}
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -100px;
+    right: -100px;
+    background: #8b5cf6;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    height: 100dvh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Views */
+.view {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    animation: fadeIn 0.4s ease forwards;
+}
+.view.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Setup View */
+#setup-view header {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.settings-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.label-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.setting-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    padding: 4px;
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--glass-bg);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+.btn-icon:hover, .btn-icon:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+input[type="number"] {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 48px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    pointer-events: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+.btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Timer View */
+#timer-view {
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 20px 0;
+}
+
+.timer-header {
+    text-align: center;
+}
+
+#phase-label {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+#round-label {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.timer-display-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+}
+
+.time-display {
+    position: absolute;
+    font-size: 4.5rem;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -2px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.timer-controls button {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    color: white;
+}
+.timer-controls button:active {
+    transform: scale(0.95);
+}
+
+.btn-secondary {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5 !important;
+}
+
+/* Phase Colors */
+body.phase-prepare .shape-1 { background: var(--prepare-color); }
+body.phase-prepare .shape-2 { background: #d97706; }
+body.phase-prepare #phase-label { color: var(--prepare-color); }
+body.phase-prepare .progress-ring__circle { stroke: var(--prepare-color); }
+
+body.phase-work .shape-1 { background: var(--work-color); }
+body.phase-work .shape-2 { background: #059669; }
+body.phase-work #phase-label { color: var(--work-color); }
+body.phase-work .progress-ring__circle { stroke: var(--work-color); }
+
+body.phase-rest .shape-1 { background: var(--rest-color); }
+body.phase-rest .shape-2 { background: #2563eb; }
+body.phase-rest #phase-label { color: var(--rest-color); }
+body.phase-rest .progress-ring__circle { stroke: var(--rest-color); }

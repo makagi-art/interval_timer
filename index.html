@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Interval Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="container" id="app">
+        <!-- Setup View -->
+        <div id="setup-view" class="view active">
+            <header>
+                <h1>Interval Timer</h1>
+                <p>Customize your workout</p>
+            </header>
+
+            <div class="settings-card glass">
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <span class="label-text">Work Time</span>
+                        <span class="label-sub">Seconds</span>
+                    </div>
+                    <div class="setting-controls">
+                        <button class="btn-icon" id="work-minus">−</button>
+                        <input type="number" id="work-time" value="20" min="1" max="999" readonly>
+                        <button class="btn-icon" id="work-plus">+</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <span class="label-text">Rest Time</span>
+                        <span class="label-sub">Seconds</span>
+                    </div>
+                    <div class="setting-controls">
+                        <button class="btn-icon" id="rest-minus">−</button>
+                        <input type="number" id="rest-time" value="10" min="0" max="999" readonly>
+                        <button class="btn-icon" id="rest-plus">+</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <span class="label-text">Rounds</span>
+                        <span class="label-sub">Sets</span>
+                    </div>
+                    <div class="setting-controls">
+                        <button class="btn-icon" id="rounds-minus">−</button>
+                        <input type="number" id="rounds" value="8" min="1" max="99" readonly>
+                        <button class="btn-icon" id="rounds-plus">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="start-btn" class="btn-primary">START WORKOUT</button>
+        </div>
+
+        <!-- Timer View -->
+        <div id="timer-view" class="view">
+            <div class="timer-header">
+                <h2 id="phase-label">PREPARE</h2>
+                <p id="round-label">Round 1 / 8</p>
+            </div>
+
+            <div class="timer-display-container">
+                <svg class="progress-ring" width="280" height="280">
+                    <circle class="progress-ring__track" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="transparent" r="120" cx="140" cy="140"/>
+                    <circle id="progress-ring" class="progress-ring__circle" stroke="#00e676" stroke-width="12" fill="transparent" r="120" cx="140" cy="140" stroke-linecap="round"/>
+                </svg>
+                <div class="time-display" id="time-left">00:05</div>
+            </div>
+
+            <div class="timer-controls">
+                <button id="pause-btn" class="btn-secondary">PAUSE</button>
+                <button id="stop-btn" class="btn-danger">STOP</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
