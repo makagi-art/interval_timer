@@ -97,6 +97,14 @@ header p {
     font-size: 1rem;
     margin-top: 6px;
 }
+.version-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+    font-weight: 400;
+}
 
 .preset-list {
     display: flex;
